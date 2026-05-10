@@ -33,7 +33,8 @@ RUN { \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-RUN a2enmod rewrite headers \
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load \
+    && a2enmod mpm_prefork rewrite headers \
     && sed -ri "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/000-default.conf /etc/apache2/apache2.conf \
     && printf "<Directory %s>\n    AllowOverride All\n    Require all granted\n</Directory>\n" "${APACHE_DOCUMENT_ROOT}" > /etc/apache2/conf-available/app-allowoverride.conf \
     && a2enconf app-allowoverride
