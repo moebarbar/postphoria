@@ -66,6 +66,7 @@ class RegisterPage extends Component
             ...$validated,
             'username' => strtolower($validated['username']),
             'email' => strtolower($validated['email']),
+            'password_confirmation' => $this->password_confirmation,
             'accept_terms' => $validated['accept_terms'] ? '1' : '0',
         ]);
 
