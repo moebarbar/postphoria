@@ -10,7 +10,7 @@
 
     <form wire:submit.prevent="sendResetLink" class="flex flex-col gap-6">
         <x-ui.input
-            wire:model.defer="email"
+            wire:model="email"
             name="email"
             :label="__('Email address')"
             type="email"

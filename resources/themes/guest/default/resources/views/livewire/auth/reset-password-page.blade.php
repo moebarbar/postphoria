@@ -12,7 +12,7 @@
         <input type="hidden" wire:model="token">
 
         <x-ui.input
-            wire:model.defer="email"
+            wire:model="email"
             name="email"
             :label="__('Email')"
             type="email"
@@ -22,7 +22,7 @@
         />
 
         <x-ui.input
-            wire:model.defer="password"
+            wire:model="password"
             name="password"
             :label="__('Password')"
             type="password"
@@ -33,7 +33,7 @@
         />
 
         <x-ui.input
-            wire:model.defer="password_confirmation"
+            wire:model="password_confirmation"
             name="password_confirmation"
             :label="__('Confirm password')"
             type="password"

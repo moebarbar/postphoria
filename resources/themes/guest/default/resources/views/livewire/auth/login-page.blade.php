@@ -44,7 +44,7 @@
             <label for="login" class="block text-sm font-medium" style="color: var(--theme-header-text-color);">{{ __('Username or email') }}</label>
             <input
                 id="login"
-                wire:model.defer="identifier"
+                wire:model="identifier"
                 name="login"
                 type="text"
                 required
@@ -64,7 +64,7 @@
                 <label for="password" class="block text-sm font-medium" style="color: var(--theme-header-text-color);">{{ __('Password') }}</label>
                 <input
                     id="password"
-                    wire:model.defer="password"
+                    wire:model="password"
                     name="password"
                     type="password"
                     required
@@ -86,7 +86,7 @@
         </div>
 
         <label for="remember-1" class="group inline-flex cursor-pointer items-start gap-3">
-            <input id="remember-1" type="checkbox" class="peer sr-only" wire:model.defer="remember" name="remember" value="1">
+            <input id="remember-1" type="checkbox" class="peer sr-only" wire:model="remember" name="remember" value="1">
 
             <span class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[0.4rem] border border-slate-300 bg-white text-white shadow-[0_1px_2px_rgba(15,23,42,0.06)] transition-all duration-150 group-hover:border-[color:rgba(var(--theme-accent-rgb),0.45)] peer-checked:border-[color:var(--theme-accent)] peer-checked:bg-[color:var(--theme-accent)] peer-checked:text-white peer-checked:shadow-[0_0_0_3px_rgba(var(--theme-accent-rgb),0.14)] peer-checked:[&_svg]:opacity-100 dark:border-slate-700 dark:bg-slate-950">
                 <svg viewBox="0 0 16 16" aria-hidden="true" class="h-3.5 w-3.5 opacity-0 transition-opacity duration-150" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">

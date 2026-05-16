@@ -24,7 +24,7 @@
             <div class="grid gap-5 md:grid-cols-2">
                 <x-ui.input
                     class="md:col-span-2"
-                    wire:model.defer="name"
+                    wire:model="name"
                     name="name"
                     :label="__('Full Name')"
                     type="text"
@@ -36,7 +36,7 @@
                 />
 
                 <x-ui.input
-                    wire:model.defer="email"
+                    wire:model="email"
                     name="email"
                     :label="__('Email Address')"
                     type="email"
@@ -47,7 +47,7 @@
                 />
 
                 <x-ui.input
-                    wire:model.defer="username"
+                    wire:model="username"
                     name="username"
                     :label="__('Username')"
                     type="text"
@@ -58,7 +58,7 @@
                 />
 
                 <x-ui.input
-                    wire:model.defer="password"
+                    wire:model="password"
                     name="password"
                     :label="__('Password')"
                     type="password"
@@ -69,7 +69,7 @@
                 />
 
                 <x-ui.input
-                    wire:model.defer="password_confirmation"
+                    wire:model="password_confirmation"
                     name="password_confirmation"
                     :label="__('Confirm Password')"
                     type="password"
@@ -81,7 +81,7 @@
 
                 <x-ui.select
                     class="md:col-span-2"
-                    wire:model.defer="timezone"
+                    wire:model="timezone"
                     name="timezone"
                     :label="__('Timezone')"
                     :error="$errors->first('timezone')"
@@ -95,7 +95,7 @@
                 </x-ui.select>
             </div>
 
-            <x-ui.checkbox wire:model.defer="accept_terms" name="accept_terms" value="1" :checked="$accept_terms" labelClass="text-slate-200">
+            <x-ui.checkbox wire:model="accept_terms" name="accept_terms" value="1" :checked="$accept_terms" labelClass="text-slate-200">
                 {{ __('I agree to the') }}
                 <a href="{{ route('guest.terms-of-use') }}" class="font-semibold transition hover:opacity-90" style="color: var(--theme-link-color);" onmouseover="this.style.color='var(--theme-link-hover-color)'" onmouseout="this.style.color='var(--theme-link-color)'" wire:navigate>{{ __('Terms & Conditions') }}</a>
             </x-ui.checkbox>
