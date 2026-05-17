@@ -67,12 +67,6 @@ class PlanForm extends Component
         $isFreePlan = (bool) $validated['form']['free_plan'];
         $isEnabled = (bool) $validated['form']['status'];
 
-        if ($isDefaultSignupPlan && ! $isFreePlan) {
-            $this->addError('form.default_signup_plan', __('The default signup plan must also be a free plan.'));
-
-            return;
-        }
-
         if ($isDefaultSignupPlan && ! $isEnabled) {
             $this->addError('form.default_signup_plan', __('The default signup plan must be enabled.'));
 

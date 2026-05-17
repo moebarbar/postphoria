@@ -10,12 +10,18 @@ class DefaultSignupPlanResolver
     {
         return AdminPlan::query()
             ->where('status', true)
-            ->where('free_plan', true)
-            ->orderByDesc('default_signup_plan')
+            ->where('default_signup_plan', true)
             ->orderByDesc('featured')
             ->orderBy('position')
             ->orderBy('id')
-            ->first();
+            ->first()
+            ?? AdminPlan::query()
+                ->where('status', true)
+                ->where('free_plan', true)
+                ->orderByDesc('featured')
+                ->orderBy('position')
+                ->orderBy('id')
+                ->first();
     }
 }
 

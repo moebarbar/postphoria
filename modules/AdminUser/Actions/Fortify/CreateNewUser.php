@@ -36,6 +36,11 @@ class CreateNewUser implements CreatesNewUsers
 
         return DB::transaction(function () use ($input): User {
             $defaultSignupPlan = $this->defaultSignupPlanResolver->resolve();
+            $startedAt = $defaultSignupPlan ? now() : null;
+            $trialDays = (int) ($defaultSignupPlan?->trial_day ?? 0);
+            $expiresAt = ($defaultSignupPlan && ! $defaultSignupPlan->free_plan && $trialDays > 0)
+                ? $startedAt?->copy()->addDays($trialDays)
+                : null;
 
             $user = User::create([
                 'name' => $input['name'],
@@ -43,8 +48,8 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'timezone' => $input['timezone'],
                 'plan_id' => $defaultSignupPlan?->id,
-                'plan_started_at' => $defaultSignupPlan ? now() : null,
-                'plan_expires_at' => null,
+                'plan_started_at' => $startedAt,
+                'plan_expires_at' => $expiresAt,
                 'referral_code' => $this->affiliate->generateReferralCode((string) $input['username']),
                 'referred_by_user_id' => $this->affiliate->referredByUserIdFromSession(),
                 'password' => $input['password'],
