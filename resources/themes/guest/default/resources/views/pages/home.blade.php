@@ -494,7 +494,7 @@
     @endphp
 
     @if ($homePlanTypes->isNotEmpty())
-        <section x-data="{ type: {{ $homeDefaultType }} }" class="guest-marketing-shell guest-section-space mx-auto px-5 pb-[28rem] pt-0 lg:px-8 lg:pb-[22rem]">
+        <section x-data="{ type: {{ $homeDefaultType }} }" class="guest-marketing-shell guest-section-space mx-auto px-5 pt-0 lg:px-8">
             <div class="mx-auto max-w-4xl text-center">
                 <span data-reveal class="inline-flex items-center rounded-full border border-cyan-400/14 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">{{ __('Pricing') }}</span>
                 <h2 data-reveal class="nova-stagger-1 mx-auto mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-white md:text-6xl">{{ __('Pick the plan that matches your publishing volume and team size.') }}</h2>
@@ -516,12 +516,12 @@
                 </div>
             </div>
 
-            <div class="mt-14 xl:relative xl:min-h-[84rem] 2xl:min-h-[74rem]">
+            <div class="mt-14 grid">
                 @foreach ($homePlanTypes as $typeKey => $typeLabel)
                     @php
                         $plansForType = collect($homePricing[$typeKey] ?? []);
                     @endphp
-                    <div x-cloak x-show="type === {{ $typeKey }}" x-transition.opacity.duration.200ms class="xl:absolute xl:inset-0" style="display: none;">
+                    <div x-cloak x-show="type === {{ $typeKey }}" x-transition.opacity.duration.200ms class="[grid-area:1/1] min-w-0" style="display: none;">
                         <div class="grid gap-6 xl:grid-cols-3">
                             @foreach ($plansForType as $plan)
                                 <article data-reveal class="nova-tilt-hover flex h-full flex-col rounded-[2.2rem] border p-8 {{ $plan['featured'] ? 'nova-accent-surface--emerald border-emerald-400/24 bg-[linear-gradient(180deg,rgba(18,38,34,0.96)_0%,rgba(12,14,26,0.92)_100%)] shadow-[0_0_0_1px_rgba(16,185,129,0.08),0_40px_90px_-52px_rgba(16,185,129,0.45)]' : 'nova-card-surface border-white/8 bg-[linear-gradient(180deg,rgba(14,17,31,0.92)_0%,rgba(10,13,25,0.82)_100%)] shadow-[0_24px_60px_-42px_rgba(0,0,0,0.7)]' }}">
