@@ -1,11 +1,5 @@
 @extends(theme_view('layouts.marketing', 'guest'))
 
-@push('head')
-    <!-- Pixel Code - https://analyio.com/ -->
-    <script defer src="https://analyio.com/pixel/S9RQtJ7gRzE766nS"></script>
-    <!-- END Pixel Code -->
-@endpush
-
 @section('content')
     @php
         $signupEnabled = auth_signup_enabled();
