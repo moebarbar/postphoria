@@ -3,6 +3,7 @@
 <head>
     @include(theme_view('partials.head', 'guest'), ['title' => $pageTitle ?? null])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+    @stack('head')
 </head>
 @php
     $languages = available_languages();
